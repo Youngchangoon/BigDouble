@@ -1,0 +1,25 @@
+{
+  "name": "longman.bigdouble",
+  "displayName": "BigDouble",
+  "description": "This plugin is utility for Big doubles",
+  "version": "1.0.0",
+  "unity": "2020.1",
+  "license": "MIT",
+  "keywords": [
+    "Unity",
+    "Double",
+    "BigDouble"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Youngchangoon/BigDouble.git"
+  },
+  "author": {
+    "name": "Youngchangoon",
+    "email": "youngchangoon521@gmail.com",
+    "url": "https://github.com/Youngchangoon"
+  },
+  "dependencies": {
+    "longman.gameutil": "1.0.1"
+  }
+}

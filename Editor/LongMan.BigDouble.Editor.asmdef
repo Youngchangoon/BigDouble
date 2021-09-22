@@ -1,0 +1,10 @@
+﻿{
+  "name": "LongMan.BigDouble.Editor",
+  "references": [
+    "LongMan.BigDouble"
+  ],
+  "optionalUnityReferences": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false
+}

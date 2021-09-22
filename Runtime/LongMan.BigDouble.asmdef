@@ -1,0 +1,10 @@
+﻿{
+  "name": "LongMan.BigDouble",
+  "references": [
+    "LongMan.GameUtil"
+  ],
+  "optionalUnityReferences": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false
+}
