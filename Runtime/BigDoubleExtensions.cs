@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
@@ -42,7 +43,7 @@ namespace LongMan.BigDouble
             string[] split = formattedNumber.Split('+');
             double frontNumber = double.Parse(split[0].TrimEnd('e'));
             int exponential = int.Parse(split[1]);
-            int digitIndex = exponential / digitInterval;
+            int digitIndex = Math.Max(0, exponential / digitInterval);
 
             while (exponential % digitInterval != 0)
             {
