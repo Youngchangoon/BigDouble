@@ -64,7 +64,16 @@ namespace LongMan.BigDouble
                 if (digitIndex == 0 || truncatedSplit.Length < 2)
                     return $"{truncatedSplit[0]}{doubleUnits[digitIndex]}";
                 else
-                    return $"{truncatedSplit[0]}{doubleUnits[digitIndex]} {truncatedSplit[1]}{doubleUnits[digitIndex - 1]}";
+                {
+                    var pointStr = truncatedSplit[1];
+
+                    while (pointStr.Length < 4)
+                        pointStr += "0";
+
+                    pointStr = pointStr.TrimStart('0');
+                    
+                    return $"{truncatedSplit[0]}{doubleUnits[digitIndex]} {pointStr}{doubleUnits[digitIndex - 1]}";
+                }
             }
         }
     }
