@@ -28,7 +28,7 @@ double 숫자를 string으로 변환해주는 Extensions를 사용합니다.
   ],
 
   "dependencies": {
-    "longman.bigdouble": "1.0.0"
+    "longman.bigdouble": "1.0.1"
   }
 }
 ```
