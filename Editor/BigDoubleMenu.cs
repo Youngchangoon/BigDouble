@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace LongMan.BigDouble.Editor
+namespace LongMan.BigDouble.Editors
 {
     internal static class BigDoubleMenu
     {
