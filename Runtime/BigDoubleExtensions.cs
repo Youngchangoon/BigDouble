@@ -41,7 +41,7 @@ namespace LongMan.BigDouble
 
             string formattedNumber = $"{new TruncateExp(number)}";
             string[] split = formattedNumber.Split('+');
-            double frontNumber = double.Parse(split[0].TrimEnd('e'));
+            double frontNumber = double.Parse(split[0].TrimEnd('e'), CultureInfo.InvariantCulture);
             int exponential = int.Parse(split[1]);
             int digitIndex = Math.Max(0, exponential / digitInterval);
 
