@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace LongMan.BigDouble
 {
     public class TruncateDouble : IFormattable
     {
-        public double Number { get; private set; }
+        public string NumberStr { get; }
 
-        public TruncateDouble(double number)
+        public TruncateDouble(string numberStr)
         {
-            Number = number;
+            NumberStr = numberStr;
         }
 
         public string ToString(string format, IFormatProvider formatProvider)
@@ -18,12 +19,20 @@ namespace LongMan.BigDouble
 
             int expLen = 1;
 
-            if (int.TryParse(format, out int outExp))
+            if (int.TryParse(format, NumberStyles.Number, CultureInfo.InvariantCulture, out int outExp))
                 expLen = outExp;
 
-            int expPow = (int)Math.Pow(10, expLen);
+            int pointIndex = NumberStr.IndexOf('.');
 
-            return $"{Math.Truncate(Number * expPow) / expPow}";
+            // No Point ( 정수 )
+            if (pointIndex < 0)
+                return NumberStr;
+
+            // Have Point ( 소수 )
+            string[] pointSplit = NumberStr.Split('.');
+            string pointAfterString = pointSplit[1].Substring(0, Math.Min(expLen, pointSplit[1].Length));
+
+            return $"{pointSplit[0]}.{pointAfterString}";
         }
     }
 }

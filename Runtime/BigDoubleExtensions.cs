@@ -41,17 +41,23 @@ namespace LongMan.BigDouble
 
             string formattedNumber = $"{new TruncateExp(number)}";
             string[] split = formattedNumber.Split('+');
-            double frontNumber = double.Parse(split[0].TrimEnd('e'), CultureInfo.InvariantCulture);
-            int exponential = int.Parse(split[1]);
+            int exponential = int.Parse(split[1], CultureInfo.InvariantCulture);
+            string frontNumber = split[0].TrimEnd('e');
+
             int digitIndex = Math.Max(0, exponential / digitInterval);
 
             while (exponential % digitInterval != 0)
             {
                 --exponential;
-                frontNumber *= 10;
+                var pointStrIndex = frontNumber.IndexOf('.');
+
+                frontNumber = frontNumber
+                    .Remove(pointStrIndex, 1)
+                    .Insert(pointStrIndex + 1, ".")
+                    .TrimEnd('.');
             }
 
-            var truncatedStr = new TruncateDouble(frontNumber).ToString(digitInterval.ToString(), null);
+            var truncatedStr = new TruncateDouble(frontNumber).ToString(digitInterval.ToString(), CultureInfo.InvariantCulture);
 
             if (curDoubleInfo.isPoint)
             {
@@ -71,7 +77,7 @@ namespace LongMan.BigDouble
                         pointStr += "0";
 
                     pointStr = pointStr.TrimStart('0');
-                    
+
                     return $"{truncatedSplit[0]}{doubleUnits[digitIndex]} {pointStr}{doubleUnits[digitIndex - 1]}";
                 }
             }
