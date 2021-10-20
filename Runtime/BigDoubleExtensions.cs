@@ -51,11 +51,20 @@ namespace LongMan.BigDouble
                 --exponential;
                 var pointStrIndex = frontNumber.IndexOf('.');
 
-                frontNumber = frontNumber
-                    .Remove(pointStrIndex, 1)
-                    .Insert(pointStrIndex + 1, ".")
-                    .TrimEnd('.');
+                if (pointStrIndex >= frontNumber.Length - 1) // 소수점이 FrontNumber의 마지막에 있는 경우
+                {
+                    frontNumber = frontNumber
+                        .Insert(pointStrIndex, "0");
+                }
+                else
+                {
+                    frontNumber = frontNumber
+                        .Remove(pointStrIndex, 1)
+                        .Insert(pointStrIndex + 1, ".");
+                }
             }
+            
+            frontNumber = frontNumber.TrimEnd('.');
 
             var truncatedStr = new TruncateDouble(frontNumber).ToString(digitInterval.ToString(), CultureInfo.InvariantCulture);
 
